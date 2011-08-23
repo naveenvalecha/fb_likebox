@@ -1,0 +1,5 @@
+name = FB Likebox
+description = "Simple module that provides a configurable block with Facebook Likebox's plugin"
+core = 6.x
+package = Facebook
+version = "6.x-1.0"

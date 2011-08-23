@@ -1,0 +1,108 @@
+<?php
+// $Id$
+/**
+ * @file
+ * Implements various blocks related to external web 2.0 functionalities
+ */
+
+/**
+ * 
+ * Implementation of hook_perm()
+ * 
+ * Defines a set of permissions available related to the facebook widget functionalities
+ */
+function fb_likebox_perm(){
+  return array('admin facebook likebox settings');
+}
+
+/**
+ * Implementation of hook_menu().
+ *
+ */
+function fb_likebox_menu(){
+    $items['admin/settings/fb-likebox'] = array(
+        'title' => 'Facebook Likebox Settings',
+        'description' => 'Configure Facebook Likebox parameters',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('fb_likebox_admin_settings'),
+        'access arguments' => array('admin facebook likebox settings'),
+        'type' => MENU_NORMAL_ITEM,
+        'file' => 'fb_likebox.admin.inc',
+    );
+    
+    return $items;
+}
+
+
+/**
+ * 
+ * Implementation of hook_block.
+ *  * 
+ * @param $op   Defines the phases the block go through. 
+ * @param $delta    Id of the block to return   
+ * @param $edit When $op is save, contains the submitted form data from the block configuration form.
+ */
+function fb_likebox_block($op = 'list', $delta = 0, $edit = array()){
+  switch($op){
+    case 'list':
+   
+      $site_name = variable_get('site_name', 'Default site name');
+      $blocks[0]['info'] = $site_name . t(' on Facebook'); 
+      //We set not to get a cache of this block
+      $blocks[0]['cache'] = BLOCK_NO_CACHE;
+      
+      return $blocks;
+      
+    case 'view':
+      switch ($delta)
+      {
+        case 0:
+
+            //Get the values given in the admin form
+            $fb_url = variable_get('fb_likebox_url', 'http://www.facebook.com/wikisaber.es');
+            $fb_colorscheme = variable_get('fb_likebox_colorscheme', 'light');
+            $fb_header = variable_get('fb_likebox_header', 'true');
+            $fb_stream = variable_get('fb_likebox_stream', 'true');
+            $fb_show_faces = variable_get('fb_likebox_show_faces', 'true');
+            $fb_scrolling = variable_get('fb_likebox_scrolling', 'no');
+            $fb_width = variable_get('fb_likebox_width', '292');
+            $fb_height = variable_get('fb_likebox_height', '556');
+            
+            //Set the subject of the block (title to be displayed to the users)
+            $site_name = variable_get('site_name', 'Default site name');
+            $block['subject'] = $site_name . t(' on Facebook');
+            
+            //Call to the theming function
+            $block['content'] = theme('fb_likebox_facebook', $fb_url, $fb_colorscheme, $fb_header, $fb_stream, $fb_show_faces,
+            $fb_scrolling, $fb_width, $fb_height);
+            
+            return $block;
+          
+          break;
+
+      }
+     
+      break;
+  }
+  
+}
+
+/**
+ * 
+ * Implementation of hook_theme()
+ * 
+ */
+function fb_likebox_theme()
+{
+    $path = drupal_get_path('module', 'fb_likebox');
+    return array
+    (
+        'fb_likebox_facebook' => array
+        (
+            'arguments' => array('fb_url'=>null, 'fb_colorscheme'=>null, 'fb_header'=>null, 'fb_stream'=>null, 
+            'fb_show_faces'=>null, 'fb_scrolling'=>null , 'fb_width'=>null, 'fb_height'=>null,'fb_frameborder'=>null),
+            'path' => $path . '/tpl',
+            'template' => 'fb_likebox',''
+        ),     
+    );
+}
