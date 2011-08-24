@@ -2,7 +2,7 @@
 
 Simple module that provides a block with the latest updates from Facebook for the provided account. It is based on the
 likebox social plugin: http://developers.facebook.com/docs/reference/plugins/like-box/
-The widget settings are configurable for users with 'admin facebook widget settings' permission.
+The widget settings are configurable for users with 'admin facebook widget settings' permission
 
 
 -- REQUIREMENTS --
