@@ -26,8 +26,8 @@ The widget settings are configurable for users with 'admin facebook widget setti
  
  -- A) Faces and stream (default)
  --- Show Stream: Yes
- --- Show Faces: No
- --- Height: 292
+ --- Show Faces: Yes
+ --- Height: 556
  
  -- B) Without Faces
  --- Show Stream: Yes
