@@ -47,14 +47,14 @@ function fb_likebox_block($op = 'list', $delta = 0, $edit = array()) {
       switch ($delta) {
         case 0:
           //Get the values given in the admin form
-          $fb_url = variable_get('fb_likebox_url', 'http://www.facebook.com/wikisaber.es');
-          $fb_colorscheme = variable_get('fb_likebox_colorscheme', 'light');
-          $fb_header = variable_get('fb_likebox_header', 'true');
-          $fb_stream = variable_get('fb_likebox_stream', 'true');
-          $fb_show_faces = variable_get('fb_likebox_show_faces', 'true');
-          $fb_scrolling = variable_get('fb_likebox_scrolling', 'no');
-          $fb_width = variable_get('fb_likebox_width', '292');
-          $fb_height = variable_get('fb_likebox_height', '556');
+          $fb_url = check_url(variable_get('fb_likebox_url', 'http://www.facebook.com/wikisaber.es'));
+          $fb_colorscheme = check_plain(variable_get('fb_likebox_colorscheme', 'light'));
+          $fb_header = check_plain(variable_get('fb_likebox_header', 'true'));
+          $fb_stream = check_plain(variable_get('fb_likebox_stream', 'true'));
+          $fb_show_faces = check_plain(variable_get('fb_likebox_show_faces', 'true'));
+          $fb_scrolling = check_plain(variable_get('fb_likebox_scrolling', 'no'));
+          $fb_width = check_plain(variable_get('fb_likebox_width', '292'));
+          $fb_height = check_plain(variable_get('fb_likebox_height', '556'));
 
           //Set the subject of the block (title to be displayed to the users)
           $site_name = variable_get('site_name', 'Default site name');

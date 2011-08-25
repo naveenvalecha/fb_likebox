@@ -21,6 +21,26 @@ The widget settings are configurable for users with 'admin facebook widget setti
 
  - Add the Facebook Page (i.e.: http://www.facebook.com/wikisaber.es) and 
    configure the display and appearance settings.
+   
+ - Configuration examples:
+ 
+ -- A) Faces and stream (default)
+ --- Show Stream: Yes
+ --- Show Faces: No
+ --- Height: 292
+ 
+ -- B) Without Faces
+ --- Show Stream: Yes
+ --- Show Faces: No
+ --- Height: 292
+ 
+ -- C) Without Stream and Faces
+ --- Show Stream: No
+ --- Show Faces: No
+ --- Scrollling: Disabled
+ --- Height: 63
+ 
+* Add the block "'Your site name' on Facebook" to a region.
 
 -- CONTACT --
 
