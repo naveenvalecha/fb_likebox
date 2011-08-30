@@ -36,9 +36,7 @@ function fb_likebox_menu() {
 function fb_likebox_block($op = 'list', $delta = 0, $edit = array()) {
   switch ($op) {
     case 'list':
-      $site_name = variable_get('site_name', 'Default site name');
-      $blocks[0]['info'] = check_plain($site_name . ' ' . t('on Facebook'));
-      // We set not to get a cache of this block.
+      $blocks[0]['info'] = t('@site_name on Facebook', array('@site_name' => variable_get('site_name', 'Default site name')));
       $blocks[0]['cache'] = BLOCK_NO_CACHE;
       return $blocks;
 
@@ -55,9 +53,8 @@ function fb_likebox_block($op = 'list', $delta = 0, $edit = array()) {
           $fb_width = check_plain(variable_get('fb_likebox_width', '292'));
           $fb_height = check_plain(variable_get('fb_likebox_height', '556'));
 
-          // Set the subject of the block (title to be displayed to the users).
-          $site_name = variable_get('site_name', 'Default site name');
-          $blocks[0]['info'] = check_plain($site_name . ' ' . t('on Facebook'));
+          // Set the subject of the block
+          $block['subject'] = t('@site_name on Facebook', array('@site_name' => variable_get('site_name', 'Default site name')));
 
           // Call to the theming function.
           $block['content'] = theme('fb_likebox_facebook', $fb_url, $fb_colorscheme, $fb_header, $fb_stream, $fb_show_faces, $fb_scrolling, $fb_width, $fb_height);
