@@ -1,4 +1,7 @@
 FB Likebox: September 15, 2011
+Issue #1257326 by drozas: Removed LICENSE.txt file.
+
+FB Likebox: September 15, 2011
 Issue #1257326 by drozas: Applied changes to move the settings into the hook_block().
 
 FB Likebox: August 29, 2011
