@@ -3,8 +3,8 @@
 Simple module that provides a block with the latest updates from Facebook for
 the provided account. It is based on the likebox social plugin:
 http://developers.facebook.com/docs/reference/plugins/like-box. The widget
-settings are configurable for users with 'admin facebook widget settings'
-permission.
+settings are configurable directly in the block  and they are available for 
+users with 'administer blocks' permission.
 
 
 -- REQUIREMENTS --
@@ -19,10 +19,11 @@ permission.
 
 -- CONFIGURATION --
 
-* Go to Administer > Site configuration > Facebook Likebox Settings and
-
- - Add the Facebook Page (i.e.: http://www.facebook.com/wikisaber.es) and
-   configure the display and appearance settings.
+* Go to Site > List > 'Theme'
+* The block will be called "'Your site name' on Facebook"
+* Click on 'configure':
+* Add the Facebook Page (i.e.: http://www.facebook.com/wikisaber.es) and
+  configure the display and appearance settings.
 
  - Configuration examples:
 
@@ -42,7 +43,6 @@ permission.
  --- Scrollling: Disabled
  --- Height: 63
 
-* Add the block "'Your site name' on Facebook" to a region.
 
 -- CONTACT --
 

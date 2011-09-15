@@ -1,0 +1,29 @@
+FB Likebox: September 15, 2011
+Issue #1257326 by drozas: Applied changes to move the settings into the hook_block().
+
+FB Likebox: August 29, 2011
+Issue #1257326 by attiks: Applied patch i1257326.patch with some code correction and better use of the t() function by attiks.
+
+FB Likebox: August 29, 2011
+Issue #1257326 by attiks: Applied patch i1257326.patch with some code correction and better use of the t() function by attiks.
+
+FB Likebox: August 25, 2011
+Issue #1257326 by tim.plunkett: Applied patch fb_likebox-1257326-18.patch by tim.plunkett.
+
+FB Likebox: August 25, 2011
+Issue #1257326 by drozas: Changes in description of the field Height on the first Configuration Example
+
+FB Likebox: August 24, 2011
+Issue #1257326 by drozas: All variables are now sanitized in hook_block(). Readme file extended with some configuration examples
+
+FB Likebox: August 24, 2011
+Issue #1257326 by drozas: Removed version line at .info file, to fulfill Drupal standards.
+
+FB Likebox: August 24, 2011
+Issue #1257326 by drozas: Removed version line at .info file, to fulfill Drupal standards.
+
+FB Likebox: August 23, 2011
+Issue #1257326 by drozas: Updated all files to fullfill Drupal coding standards.
+
+FB Likebox: August 23, 2011
+Issue #0 by drozas: Upload all files.
