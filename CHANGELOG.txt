@@ -1,3 +1,6 @@
+FB Likebox: October 14, 2011
+Added Spanish translation
+
 FB Likebox: September 15, 2011
 Issue #1257326 by drozas: Removed LICENSE.txt file.
 

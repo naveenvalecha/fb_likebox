@@ -43,6 +43,13 @@ users with 'administer blocks' permission.
  --- Scrollling: Disabled
  --- Height: 63
 
+ -- D) Only Faces
+ --- Show Header: No
+ --- Show Stream: No
+ --- Show Faces: Yes
+ --- Scrollling: Disabled
+ --- Height: 330
+
 
 -- CONTACT --
 
