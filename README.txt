@@ -19,7 +19,7 @@ users with 'administer blocks' permission.
 
 -- CONFIGURATION --
 
-* Go to Site > List > 'Theme'
+* Go to Site > List > 'Theme' in D6 or Structure > Blocks > 'Theme' in D7
 * The block will be called "'Your site name' on Facebook"
 * Click on 'configure':
 * Add the Facebook Page (i.e.: http://www.facebook.com/wikisaber.es) and
@@ -42,6 +42,13 @@ users with 'administer blocks' permission.
  --- Show Faces: No
  --- Scrollling: Disabled
  --- Height: 63
+
+ -- D) Only Faces
+ --- Show Header: No
+ --- Show Stream: No
+ --- Show Faces: Yes
+ --- Scrollling: Disabled
+ --- Height: 330
 
 
 -- CONTACT --
