@@ -2,7 +2,7 @@
 
 /**
  * @file
- * @todo.
+ * Simple module that provides a configurable block with Facebook Likebox's plugin.
  */
 
 /**
@@ -50,7 +50,6 @@ function fb_likebox_block($op = 'list', $delta = 0, $edit = array()) {
             '#title' => t('Theming Settings'),
             '#collapsible' => FALSE,
           );
-        
           // Display settings.
           $form['fb_likebox_display_settings']['fb_likebox_url'] = array(
             '#type' => 'textfield',
@@ -108,7 +107,6 @@ function fb_likebox_block($op = 'list', $delta = 0, $edit = array()) {
             ),
             '#description' => t('Enables vertical scrolling'),
           );
-        
           // Theming settings.
           $form['fb_likebox_theming_settings']['fb_likebox_width'] = array(
             '#type' => 'textfield',
@@ -177,7 +175,7 @@ function fb_likebox_form_block_admin_configure_alter(&$form, $form_state) {
 }
 
 /**
- * Perform the validation of the block settings. 
+ * Perform the validation of the block settings.
  */
 function _fb_likebox_validate_block_settings(&$form, $form_state) {
   // Facebook display settings validation.
@@ -185,13 +183,11 @@ function _fb_likebox_validate_block_settings(&$form, $form_state) {
   if (!valid_url($fb_url, TRUE)) {
     form_set_error('fb_likebox_url', t('Please enter a valid url'));
   }
-
   // Facebook theming settings validation.
   $fb_width = $form_state['values']['fb_likebox_width'];
   if (!is_numeric($fb_width) || intval($fb_width) <= 0) {
     form_set_error('fb_likebox_width', t('Width should be a number bigger than 0'));
   }
-
   $fb_height = $form_state['values']['fb_likebox_height'];
   if (!is_numeric($fb_height) || intval($fb_height) <= 0) {
     form_set_error('fb_likebox_height', t('Height should be a number bigger than 0'));

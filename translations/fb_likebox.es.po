@@ -85,7 +85,7 @@ msgstr "Mostrar caras"
 
 #: fb_likebox.module:99
 msgid "Specifies whether or not to display profile photos in the plugin."
-msgstr "Mostrar las fotos de perfil de usuarios en el plugin"
+msgstr "Mostrar las fotos de perfil de usuarios en el plugin."
 
 #: fb_likebox.module:103
 msgid "Scrolling"

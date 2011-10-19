@@ -1,5 +1,11 @@
+FB Likebox: October 19, 2011
+Issue #1257326 by drozas: Renamed variable $facebook_width to $fb_width in fb_likebox.tpl.php.
+
 FB Likebox: October 14, 2011
-Added Spanish translation
+Issue #1257326 by drozas: Removed .svn files.
+
+FB Likebox: October 14, 2011
+Issue #1257326 by drozas: Added translations directory and .es.po to have automatic translation into Spanish.
 
 FB Likebox: September 15, 2011
 Issue #1257326 by drozas: Removed LICENSE.txt file.
