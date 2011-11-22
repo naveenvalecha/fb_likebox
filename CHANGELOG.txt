@@ -1,2 +1,5 @@
+FB Likebox: November 22, 2011
+Issue #1348360 by lbirba: Applied patch fb_likebox_1348360.patch that solves a syntax error at fb_likebox.tpl.php that prevents to display the frame properly, by lbirba.
+
 FB Likebox: October 19, 2011
 Issue #1257326 by drozas: Converting 6.x-1.3 version to Drupal 7. Everything ready but block config settings validation.
