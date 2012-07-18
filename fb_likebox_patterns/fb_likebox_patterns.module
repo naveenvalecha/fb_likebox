@@ -1,0 +1,148 @@
+<?php
+
+/**
+ * @file
+ * Submodule to enable compatibility of Facebook Likebox with patterns module.
+ */
+
+/**
+ *
+ * Implements hook_patterns().
+ *
+ * Declares the module able to handle patterns (http://drupal.org/project/patterns)
+ * configurations.
+ *
+ * @param $data
+ */
+function fb_likebox_patterns($data = NULL) {
+  $actions['fb_likebox'] = array(
+      PATTERNS_INFO   => t('Settings for Facebook Likebox module'),
+      PATTERNS_MODIFY => array('block_admin_configure'),
+      PATTERNS_EXPORT => array(PATTERNS_EXPORT_ALL => 'fb_likebox_patterns_export_all_settings'),
+  );
+  return $actions;
+}
+
+/**
+ *
+ * Implements function to export the values of the form.
+ * In this case we do not use the patterns_api_extract_actions()
+ * function, and we return directly the array with the values
+ * reay to be fetched.
+ *
+ * @param $args
+ * @param $result
+ */
+function fb_likebox_patterns_export_all_settings($args = NULL, &$result = NULL) {
+
+$form_id = 'block_admin_configure';
+
+$result = array();
+$result['tag'] = 'fb_likebox';
+$result['fb_url'] = variable_get('fb_likebox_url', 'http://www.facebook.com/wikisaber.es');
+$result['fb_colorscheme'] = variable_get('fb_likebox_colorscheme', 'light');
+$result['fb_header'] = variable_get('fb_likebox_header', 'true');
+$result['fb_stream'] = variable_get('fb_likebox_stream', 'true');
+$result['fb_show_faces'] = variable_get('fb_likebox_show_faces', 'true');
+$result['fb_scrolling'] = variable_get('fb_likebox_scrolling', 'no');
+$result['fb_width'] = variable_get('fb_likebox_width', '292');
+$result['fb_height'] = variable_get('fb_likebox_height', '556');
+$action = array(PATTERNS_MODIFY => $result);
+$out = array($action);
+return $out;
+}
+
+/**
+ *
+ * Implements hook_patterns_validate().
+ * Check the input to see if the values are according to what is expected by the module.
+ *
+ * @TO-DO: Analyze and check values to inject in the form (i.e.: colorscheme should be
+ * 'dark' or 'light')
+ *
+ * @param $action
+ * @param $tag
+ * @param $data
+ */
+function fb_likebox_patterns_validate($action, $tag, &$data) {
+  //Implementation required by the current version of patterns.
+  return patterns_results(PATTERNS_SUCCESS, $msg);
+}
+
+/**
+ *
+ * Implements hook_patterns_callbacks().
+ * Returns the array of form IDs to run. Called after validate.
+ *
+ * @param $action
+ * @param $tag
+ * @param $data
+ */
+function fb_likebox_patterns_callbacks($action, $tag, &$data) {
+  //Just return the form ids specified above. No custom functions used here.
+  //We call the main hook back in case there are many actions to implement, it is
+  //called after hook_patterns_validate().
+  //Implementation required by the current version of patterns.
+  $desc = fb_likebox_patterns();
+  $result = $desc[$tag][$action];
+  return patterns_results(PATTERNS_SUCCESS, t('Execution successful'), $result);
+}
+
+/**
+ *
+ * Implements hook_patterns_build().
+ * Gets the form data from the action.
+ *
+ * @param $action
+ * @param $form_id
+ * @param $data
+ * @param $a
+ */
+function fb_likebox_patterns_build($action, $form_id, &$data = NULL, &$a) {
+  //Prepare for valid processing of this type of component.
+  //Called after hook_patterns_callbacks().
+  //Implementation required by the current version of patterns.
+  return patterns_results(PATTERNS_SUCCESS, t('Execution successful'), $data);
+}
+
+/**
+ *
+ * Implements hook_patterns_params().
+ * Returns extra params that the form may require.
+ *
+ * @param $action
+ * @param $form_id
+ * @param $data
+ * @param $a
+ */
+function fb_likebox_patterns_params($action, $form_id, &$data, &$a) {
+  //   if ($form_id == 'block_admin_configure') {
+  //     $result = array($data['module'], $data['delta']);
+  //   }
+  //Called after hook_patterns_build().
+  //Implementation required by the current version of patterns.
+  return patterns_results(PATTERNS_SUCCESS, t('Execution successful'), $result);
+}
+
+/**
+ *
+ * Implements hook_patterns_cleanup().
+ * Performs optional additional operations, after the execution
+ * of the action has finished.
+ *
+ * @param $action
+ * @param $tag
+ * @param $data
+ */
+function fb_likebox_patterns_cleanup($action, $tag, &$data) {
+  //Called after hook_patterns_params().
+  //Implementation required by the current version of patterns.
+  return patterns_results();
+}
+
+/**
+ * Implements hook_patterns_directory().
+ */
+function fb_likebox_patterns_directory() {
+  return drupal_get_path('module', 'fb_likebox_patterns') . '/patterns/';
+}

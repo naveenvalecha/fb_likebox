@@ -203,4 +203,3 @@ function _fb_likebox_validate_block_settings(&$form, $form_state) {
     form_set_error('fb_likebox_height', t('Height should be a number bigger than 0'));
   }
 }
-
