@@ -1,3 +1,6 @@
+FB Likebox: July 19, 2012
+Applied changes in the 7.x-1.x-dev branch to make the module settings exportable in patterns (http://drupal.org/project/patterns)
+
 FB Likebox: July 18, 2012
 Created submodule in the 7.x-1.x-dev branch to make the module compatible with patterns (http://drupal.org/project/patterns)
 
