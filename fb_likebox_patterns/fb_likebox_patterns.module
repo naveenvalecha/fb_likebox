@@ -104,38 +104,6 @@ function fb_likebox_patterns_build($action, $form_id, &$data = NULL, &$a) {
 }
 
 /**
- *
- * Implements hook_patterns_params().
- * Returns extra params that the form may require.
- *
- * @param $action
- * @param $form_id
- * @param $data
- * @param $a
- */
-/*function fb_likebox_patterns_params($action, $form_id, &$data, &$a) {
-  //Called after hook_patterns_build().
-  //Implementation required by the current version of patterns.
-  return patterns_results(PATTERNS_SUCCESS, t('Execution successful'), $result);
-}*/
-
-/**
- *
- * Implements hook_patterns_cleanup().
- * Performs optional additional operations, after the execution
- * of the action has finished.
- *
- * @param $action
- * @param $tag
- * @param $data
- */
-/*function fb_likebox_patterns_cleanup($action, $tag, &$data) {
-  //Called after hook_patterns_params().
-  //Implementation required by the current version of patterns.
-  return patterns_results();
-}*/
-
-/**
  * Implements hook_patterns_directory().
  */
 function fb_likebox_patterns_directory() {
