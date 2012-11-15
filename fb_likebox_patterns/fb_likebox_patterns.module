@@ -3,6 +3,10 @@
 /**
  * @file
  * Submodule to enable compatibility of Facebook Likebox with patterns module.
+ * The current version makes use of the system pattern component, therefore it
+ * does not really call drupal_form_submit() for the block_admin_configure $form_id,
+ * and the values will not be refreshed in that form (although the changes will be
+ * applied since they are taken from get/set variables).
  */
 
 /**
@@ -65,42 +69,6 @@ function fb_likebox_patterns_export_all_settings($args = NULL, &$result = NULL) 
 function fb_likebox_patterns_validate($action, $tag, &$data) {
   //Implementation required by the current version of patterns.
   return patterns_results(PATTERNS_SUCCESS, $msg);
-}
-
-/**
- *
- * Implements hook_patterns_callbacks().
- * Returns the array of form IDs to run. Called after validate.
- *
- * @param $action
- * @param $tag
- * @param $data
- */
-function fb_likebox_patterns_callbacks($action, $tag, &$data) {
-  //Just return the form ids specified above. No custom functions used here.
-  //We call the main hook back in case there are many actions to implement, it is
-  //called after hook_patterns_validate().
-  //Implementation required by the current version of patterns.
-  $desc = fb_likebox_patterns();
-  $result = $desc[$tag][$action];
-  return patterns_results(PATTERNS_SUCCESS, t('Execution successful'), $result);
-}
-
-/**
- *
- * Implements hook_patterns_build().
- * Gets the form data from the action.
- *
- * @param $action
- * @param $form_id
- * @param $data
- * @param $a
- */
-function fb_likebox_patterns_build($action, $form_id, &$data = NULL, &$a) {
-  //Prepare for valid processing of this type of component.
-  //Called after hook_patterns_callbacks().
-  //Implementation required by the current version of patterns.
-  return patterns_results(PATTERNS_SUCCESS, t('Execution successful'), $data);
 }
 
 /**
