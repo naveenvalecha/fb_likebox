@@ -37,6 +37,7 @@ function fb_likebox_block_configure($delta = '') {
         '#title' => t('Facebook Page URL'),
         '#default_value' => variable_get('fb_likebox_url', 'http://www.facebook.com/wikisaber.es'),
         '#description' => t('Enter the Facebook Page URL. I.e.: http://www.facebook.com/wikisaber.es'),
+        '#required' => TRUE,
       );
       $form['fb_likebox_display_settings']['fb_likebox_colorscheme'] = array(
         '#type' => 'select',
@@ -94,12 +95,14 @@ function fb_likebox_block_configure($delta = '') {
         '#title' => t('Width'),
         '#default_value' => variable_get('fb_likebox_width', '292'),
         '#description' => t('The width of the Facebook likebox in pixels'),
+        '#required' => TRUE,
       );
       $form['fb_likebox_theming_settings']['fb_likebox_height'] = array(
         '#type' => 'textfield',
         '#title' => t('Height'),
         '#default_value' => variable_get('fb_likebox_height', '556'),
         '#description' => t('The height of the plugin in pixels. The default height provided by Facebook API varies based on number of faces to display, and whether the stream is displayed. With the stream displayed, and 10 faces the default height is 556px. With no faces, and no stream the default height is 63px. You will need to play with these value if you haved disabled those features and you want the block to be displayed without an empty section.'),
+        '#required' => TRUE,
       );
       return $form;
   }
@@ -170,17 +173,16 @@ function fb_likebox_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_form_FORM-ID_alter().
- * @TO-DO: Look for a way to perform this in Drupal 7.
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Adds validation of block configuration custom fields.
  */
-//function fb_likebox_form_block_admin_configure_alter(&$form, $form_state) {
-//  //Only modify the form if it involve our form element this function will be called for every block configure form
-//  if (empty($form['block_settings']['fb_likebox_display_settings']) || empty($form['block_settings']['fb_likebox_theming_settings'])) {
-//    return;
-//  }
-//  //Add our validation function
-//  $form['#validate'][] = '_fb_likebox_validate_block_settings';
-//}
+function fb_likebox_form_block_admin_configure_alter(&$form, &$form_state, $form_id) {
+  if ($form['module']['#value'] == 'fb_likebox') {
+    $form['#validate'][] = '_fb_likebox_validate_block_settings';
+  }
+}
+
 
 /**
  * Perform the validation of the block settings.
