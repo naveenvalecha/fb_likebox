@@ -48,6 +48,7 @@ function fb_likebox_block_configure($delta = '') {
           'dark' => t('Dark'),
         ),
         '#description' => t("The color scheme for the plugin. Options: 'light', 'dark'"),
+        '#required' => TRUE,
       );
       $form['fb_likebox_display_settings']['fb_likebox_header'] = array(
         '#type' => 'select',
@@ -58,6 +59,7 @@ function fb_likebox_block_configure($delta = '') {
           'true' => t('Yes'),
         ),
         '#description' => t('Specifies whether to display the Facebook header at the top of the plugin'),
+        '#required' => TRUE,
       );
       $form['fb_likebox_display_settings']['fb_likebox_stream'] = array(
         '#type' => 'select',
@@ -68,6 +70,7 @@ function fb_likebox_block_configure($delta = '') {
           'true' => t('Yes'),
         ),
         '#description' => t("Specifies whether to display a stream of the latest posts from the Page's wall"),
+        '#required' => TRUE,
       );
       $form['fb_likebox_display_settings']['fb_likebox_show_faces'] = array(
         '#type' => 'select',
@@ -78,6 +81,7 @@ function fb_likebox_block_configure($delta = '') {
           'true' => t('Yes'),
         ),
         '#description' => t('Specifies whether or not to display profile photos in the plugin.'),
+        '#required' => TRUE,
       );
       $form['fb_likebox_display_settings']['fb_likebox_scrolling'] = array(
         '#type' => 'select',
@@ -88,6 +92,7 @@ function fb_likebox_block_configure($delta = '') {
           'yes' => t('Enabled'),
         ),
         '#description' => t('Enables vertical scrolling'),
+        '#required' => TRUE,
       );
       // Theming settings.
       $form['fb_likebox_theming_settings']['fb_likebox_width'] = array(
