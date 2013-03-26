@@ -15,8 +15,8 @@
  *
  * Declares the module able to handle patterns (http://drupal.org/project/patterns)
  * configurations.
- *
  * @param $data
+ * @return $actions
  */
 function fb_likebox_patterns($data = NULL) {
   $actions['fb_likebox'] = array(
@@ -33,7 +33,6 @@ function fb_likebox_patterns($data = NULL) {
  * In this case we do not use the patterns_api_extract_actions()
  * function, and we return directly the array with the action values
  * ready to be fetched.
- *
  * @param $args
  * @param $result
  */
@@ -50,13 +49,13 @@ function fb_likebox_patterns_export_all_settings($args = NULL, &$result = NULL) 
   $variables_action[] = array('name' => 'fb_likebox_scrolling', 'value' => variable_get('fb_likebox_scrolling', 'no'));
   $variables_action[] = array('name' => 'fb_likebox_width', 'value' => variable_get('fb_likebox_width', '292'));
   $variables_action[] = array('name' => 'fb_likebox_height', 'value' => variable_get('fb_likebox_height', '556'));
-  
   $result[] = array(PATTERNS_MODIFY => $variables_action);
   return $result;
 }
 
 /**
  * Implements hook_patterns_directory().
+ * @return Patterns directory
  */
 function fb_likebox_patterns_directory() {
   return drupal_get_path('module', 'fb_likebox_patterns') . '/patterns/';
