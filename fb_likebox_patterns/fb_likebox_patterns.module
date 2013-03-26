@@ -10,13 +10,7 @@
  */
 
 /**
- *
  * Implements hook_patterns().
- *
- * Declares the module able to handle patterns (http://drupal.org/project/patterns)
- * configurations.
- * @param $data
- * @return $actions
  */
 function fb_likebox_patterns($data = NULL) {
   $actions['fb_likebox'] = array(
@@ -28,7 +22,6 @@ function fb_likebox_patterns($data = NULL) {
 }
 
 /**
- *
  * Implements function to export the values of the block configuration form.
  * In this case we do not use the patterns_api_extract_actions()
  * function, and we return directly the array with the action values
@@ -55,7 +48,6 @@ function fb_likebox_patterns_export_all_settings($args = NULL, &$result = NULL) 
 
 /**
  * Implements hook_patterns_directory().
- * @return Patterns directory
  */
 function fb_likebox_patterns_directory() {
   return drupal_get_path('module', 'fb_likebox_patterns') . '/patterns/';
