@@ -3,10 +3,10 @@
 
 info:
   title: FB Likebox without Stream and Faces
-  description: Places a faces only version of FB Likebox in the first sidebar of the bartik theme.
+  description: Places the most simple version of FB Likebox in the first sidebar of the bartik theme.
   author: QScience
   category: Facebook Likebox
-  version: 1.0
+  version: 1.1
   core: 7.x
   author_email: david.rozas@gmail.com
   author_website: http://qlectives.eu/
@@ -19,10 +19,8 @@ actions:
       status: 1
       weight: -6
       theme: bartik
-      region: sidebar_first # Redundant, but needed, for now.
-      regions:
-          seven: -1 # Disabled.
-          bartik: sidebar_first
+      region: sidebar_first
+      title: FB Likebox (without Stream or Faces)
 
 # Facebook Likebox specific settings.
   - modify:
