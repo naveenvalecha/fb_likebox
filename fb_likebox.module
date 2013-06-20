@@ -97,12 +97,12 @@ function fb_likebox_block_configure($delta = '') {
       $form['fb_likebox_display_settings']['fb_likebox_force_wall'] = array(
           '#type' => 'select',
           '#title' => t('Force wall'),
-          '#default_value' => variable_get('fb_likebox_force_wall', 'true'),
+          '#default_value' => variable_get('fb_likebox_force_wall', 'false'),
           '#options' => array(
               'false' => t('No'),
               'true' => t('Yes'),
           ),
-          '#description' => t('Specifies whether the stream contains posts from the Places wall or just checkins from friends'),
+          '#description' => t('For Places: specifies whether the stream contains posts from the Places wall or just checkins from friends.'),
           '#required' => TRUE,
       );
       // Theming settings.
@@ -110,7 +110,7 @@ function fb_likebox_block_configure($delta = '') {
         '#type' => 'textfield',
         '#title' => t('Width'),
         '#default_value' => variable_get('fb_likebox_width', '292'),
-        '#description' => t('The width of the Facebook likebox in pixels'),
+        '#description' => t('The width of the Facebook likebox in pixels.'),
         '#required' => TRUE,
       );
       $form['fb_likebox_theming_settings']['fb_likebox_height'] = array(
@@ -128,7 +128,7 @@ function fb_likebox_block_configure($delta = '') {
               'false' => t('No'),
               'true' => t('Yes'),
           ),
-          '#description' => t('Specifies whether or not to show a border around the plugin'),
+          '#description' => t('Specifies whether or not to show a border around the plugin. Set to false to style the iframe with your custom CSS.'),
           '#required' => TRUE,
       );
       return $form;
@@ -151,7 +151,7 @@ function fb_likebox_block_view($delta = '') {
       $fb_width = variable_get('fb_likebox_width', '292');
       $fb_height = variable_get('fb_likebox_height', '556');
       $fb_show_border = variable_get('fb_likebox_show_border', 'true');
-      $fb_force_wall = variable_get('fb_likebox_force_wall', 'true');
+      $fb_force_wall = variable_get('fb_likebox_force_wall', 'false');
       // Set the subject of the block
       $block['subject'] = t('@site_name on Facebook', array('@site_name' => variable_get('site_name', 'Default site name')));
       // Call to the theming function.
