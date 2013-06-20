@@ -42,6 +42,8 @@ function fb_likebox_patterns_export_all_settings($args = NULL, &$result = NULL) 
   $variables_action[] = array('name' => 'fb_likebox_scrolling', 'value' => variable_get('fb_likebox_scrolling', 'no'));
   $variables_action[] = array('name' => 'fb_likebox_width', 'value' => variable_get('fb_likebox_width', '292'));
   $variables_action[] = array('name' => 'fb_likebox_height', 'value' => variable_get('fb_likebox_height', '556'));
+  $variables_action[] = array('name' => 'fb_likebox_show_border', 'value' => variable_get('fb_likebox_show_border', 'true'));
+  $variables_action[] = array('name' => 'fb_likebox_force_wall', 'value' => variable_get('fb_likebox_force_wall', 'true'));
   $result[] = array(PATTERNS_MODIFY => $variables_action);
   return $result;
 }
