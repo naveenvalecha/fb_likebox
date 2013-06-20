@@ -47,7 +47,7 @@ function fb_likebox_block_configure($delta = '') {
           'light' => t('Light'),
           'dark' => t('Dark'),
         ),
-        '#description' => t("The color scheme for the plugin. Options: 'light', 'dark'"),
+        '#description' => t("The color scheme for the plugin. Options: 'light', 'dark'."),
         '#required' => TRUE,
       );
       $form['fb_likebox_display_settings']['fb_likebox_header'] = array(
@@ -58,7 +58,7 @@ function fb_likebox_block_configure($delta = '') {
           'false' => t('No'),
           'true' => t('Yes'),
         ),
-        '#description' => t('Specifies whether to display the Facebook header at the top of the plugin'),
+        '#description' => t('Specifies whether to display the Facebook header at the top of the plugin.'),
         '#required' => TRUE,
       );
       $form['fb_likebox_display_settings']['fb_likebox_stream'] = array(
@@ -69,7 +69,7 @@ function fb_likebox_block_configure($delta = '') {
           'false' => t('No'),
           'true' => t('Yes'),
         ),
-        '#description' => t("Specifies whether to display a stream of the latest posts from the Page's wall"),
+        '#description' => t("Specifies whether to display a stream of the latest posts from the Page's wall."),
         '#required' => TRUE,
       );
       $form['fb_likebox_display_settings']['fb_likebox_show_faces'] = array(
