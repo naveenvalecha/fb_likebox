@@ -49,3 +49,9 @@ actions:
       -
         name: fb_likebox_height
         value: 63
+      -
+        name: fb_likebox_show_border
+        value: 'false'
+      -
+        name: fb_likebox_force_wall
+        value: 'false'
