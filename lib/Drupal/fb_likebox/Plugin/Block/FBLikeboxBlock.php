@@ -29,7 +29,7 @@ class FBLikeboxBlock extends BlockBase {
       'properties' => array(
         'administrative' => TRUE
       ),
-      'fb_likebox_url' => 'http://www.facebook.com/wikisaber.pt',
+      'fb_likebox_url' => 'http://www.facebook.com/wikisaber.es',
       'fb_likebox_colorscheme' => 'light',
       'fb_likebox_header' => 'true',
       'fb_likebox_stream' => 'true',
@@ -160,6 +160,26 @@ class FBLikeboxBlock extends BlockBase {
   }
   
   /**
+   * Overrides \Drupal\block\BlockBase::blockValidate().
+   */  
+  public function blockValidate($form, &$form_state) {
+    // Facebook display settings validation.
+    $fb_url = $form_state['values']['fb_likebox_display_settings']['fb_likebox_url'];
+    if (!valid_url($fb_url, TRUE)) {
+      form_set_error('fb_likebox_url', t('Please enter a valid url'));
+    }
+    // Facebook theming settings validation.
+    $fb_width = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_width'];
+    if (!is_numeric($fb_width) || intval($fb_width) <= 0) {
+      form_set_error('fb_likebox_width', t('Width should be a number bigger than 0'));
+    }
+    $fb_height = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_height'];
+    if (!is_numeric($fb_height) || intval($fb_height) <= 0) {
+      form_set_error('fb_likebox_height', t('Height should be a number bigger than 0'));
+    }
+  }
+  
+  /**
    * Overrides \Drupal\block\BlockBase::blockSubmit().
    */
   public function blockSubmit($form, &$form_state) {
@@ -176,14 +196,12 @@ class FBLikeboxBlock extends BlockBase {
   }
   
   /**
-   * {@inheritdoc}
+   * Implements \Drupal\block\BlockBase::build().
    */
   public function build() {
-    $build = array(
-        //'#theme' => 'item_list__user__online',
-        '#prefix' => '<p> This is just a test</p>',
+    return array(
+      '#children' => theme('fb_likebox_block'),
     );
-    return $build;
   }
 }
 ?>
