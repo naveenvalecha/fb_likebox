@@ -163,10 +163,17 @@ class FBLikeboxBlock extends BlockBase {
    * Overrides \Drupal\block\BlockBase::blockSubmit().
    */
   public function blockSubmit($form, &$form_state) {
-    $this->configuration['seconds_online'] = $form_state['values']['user_block_seconds_online'];
-    $this->configuration['max_list_count'] = $form_state['values']['user_block_max_list_count'];
+    $this->configuration['fb_likebox_url'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_url'];
+    $this->configuration['fb_likebox_colorscheme'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_colorscheme'];
+    $this->configuration['fb_likebox_header'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_header'];
+    $this->configuration['fb_likebox_stream'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_stream'];
+    $this->configuration['fb_likebox_show_faces'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_show_faces'];
+    $this->configuration['fb_likebox_scrolling'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_scrolling'];
+    $this->configuration['fb_likebox_force_wall'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_force_wall'];
+    $this->configuration['fb_likebox_width'] = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_width'];
+    $this->configuration['fb_likebox_height'] = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_height'];
+    $this->configuration['fb_likebox_show_border'] = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_show_border'];
   }
-  
   
   /**
    * {@inheritdoc}
