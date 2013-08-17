@@ -1,5 +1,0 @@
-name = Facebook Likebox
-description = Simple module that provides a configurable block with Facebook Likebox's plugin.
-core = 7.x
-files[] = fb_likebox.module
-package = FB Likebox
