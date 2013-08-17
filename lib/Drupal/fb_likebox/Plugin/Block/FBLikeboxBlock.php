@@ -34,20 +34,116 @@ class FBLikeboxBlock extends BlockBase {
    * Overrides \Drupal\block\BlockBase::blockForm().
    */
   public function blockForm($form, &$form_state) {
-    $period = drupal_map_assoc(array(30, 60, 120, 180, 300, 600, 900, 1800, 2700, 3600, 5400, 7200, 10800, 21600, 43200, 86400), 'format_interval');
-    $form['user_block_seconds_online'] = array(
-        '#type' => 'select',
-        '#title' => t('User activity'),
-        '#default_value' => $this->configuration['seconds_online'],
-        '#options' => $period,
-        '#description' => t('A user is considered online for this long after they have last viewed a page.')
+    // Facebook Widget settings.
+    $form['fb_likebox_display_settings'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Display options'),
+      '#collapsible' => FALSE,
     );
-    $form['user_block_max_list_count'] = array(
+    $form['fb_likebox_theming_settings'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Theming Settings'),
+      '#collapsible' => FALSE,
+    );
+    // Display settings.
+    $form['fb_likebox_display_settings']['fb_likebox_url'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Facebook Page URL'),
+      '#default_value' => variable_get('fb_likebox_url', 'http://www.facebook.com/wikisaber.es'),
+      '#description' => t('Enter the Facebook Page URL. I.e.: http://www.facebook.com/wikisaber.es'),
+      '#required' => TRUE,
+    );
+    $form['fb_likebox_display_settings']['fb_likebox_colorscheme'] = array(
+      '#type' => 'select',
+      '#title' => t('Color Scheme'),
+      '#default_value' => variable_get('fb_likebox_colorscheme', 'light'),
+      '#options' => array(
+        'light' => t('Light'),
+        'dark' => t('Dark'),
+      ),
+      '#description' => t("The color scheme for the plugin. Options: 'light', 'dark'."),
+      '#required' => TRUE,
+    );
+    $form['fb_likebox_display_settings']['fb_likebox_header'] = array(
+      '#type' => 'select',
+      '#title' => t('Header'),
+      '#default_value' => variable_get('fb_likebox_header', 'true'),
+      '#options' => array(
+        'false' => t('No'),
+        'true' => t('Yes'),
+      ),
+      '#description' => t('Specifies whether to display the Facebook header at the top of the plugin.'),
+      '#required' => TRUE,
+    );
+    $form['fb_likebox_display_settings']['fb_likebox_stream'] = array(
+      '#type' => 'select',
+      '#title' => t('Stream'),
+      '#default_value' => variable_get('fb_likebox_stream', 'true'),
+      '#options' => array(
+        'false' => t('No'),
+        'true' => t('Yes'),
+      ),
+      '#description' => t("Specifies whether to display a stream of the latest posts from the Page's wall."),
+      '#required' => TRUE,
+    );
+    $form['fb_likebox_display_settings']['fb_likebox_show_faces'] = array(
+      '#type' => 'select',
+      '#title' => t('Show Faces'),
+      '#default_value' => variable_get('fb_likebox_show_faces', 'true'),
+      '#options' => array(
+        'false' => t('No'),
+        'true' => t('Yes'),
+      ),
+      '#description' => t('Specifies whether or not to display profile photos in the plugin.'),
+      '#required' => TRUE,
+    );
+    $form['fb_likebox_display_settings']['fb_likebox_scrolling'] = array(
+      '#type' => 'select',
+      '#title' => t('Scrolling'),
+      '#default_value' => variable_get('fb_likebox_scrolling', 'no'),
+      '#options' => array(
+        'no' => t('Disabled'),
+        'yes' => t('Enabled'),
+      ),
+      '#description' => t('Enables vertical scrolling'),
+      '#required' => TRUE,
+    );
+    $form['fb_likebox_display_settings']['fb_likebox_force_wall'] = array(
         '#type' => 'select',
-        '#title' => t('User list length'),
-        '#default_value' => $this->configuration['max_list_count'],
-        '#options' => drupal_map_assoc(array(0, 5, 10, 15, 20, 25, 30, 40, 50, 75, 100)),
-        '#description' => t('Maximum number of currently online users to display.')
+        '#title' => t('Force wall'),
+        '#default_value' => variable_get('fb_likebox_force_wall', 'false'),
+        '#options' => array(
+            'false' => t('No'),
+            'true' => t('Yes'),
+        ),
+        '#description' => t('For Places: specifies whether the stream contains posts from the Places wall or just checkins from friends.'),
+        '#required' => TRUE,
+    );
+    // Theming settings.
+    $form['fb_likebox_theming_settings']['fb_likebox_width'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Width'),
+      '#default_value' => variable_get('fb_likebox_width', '292'),
+      '#description' => t('The width of the Facebook likebox in pixels.'),
+      '#required' => TRUE,
+    );
+    $form['fb_likebox_theming_settings']['fb_likebox_height'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Height'),
+      '#default_value' => variable_get('fb_likebox_height', '556'),
+      '#description' => t('The height of the plugin in pixels. The default height provided by Facebook API varies based on number of faces to display, and whether the stream is displayed. With the stream displayed, and 10 faces the default height is 556px. With no faces, and no stream the default height is 63px. You will need to play with these value if you haved disabled those features and you want the block to be displayed without an empty section.'),
+      '#required' => TRUE,
+    );
+    $form['fb_likebox_theming_settings']['fb_likebox_show_border'] = array(
+        '#type' => 'select',
+        '#title' => t('Border'),
+        '#default_value' => variable_get('fb_likebox_show_border', 'true'),
+        '#options' => array(
+            'false' => t('No'),
+            'true' => t('Yes'),
+        ),
+        '#description' => t('Specifies whether or not to show a border around the plugin. Set to false to style the iframe with your custom CSS.'),
+        '#required' => TRUE,
     );
     return $form;
   }
