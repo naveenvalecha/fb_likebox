@@ -3,3 +3,45 @@
  * @file
  * Code for FB Likebox module.
  */
+
+/**
+ * Implements hook_theme().
+ */
+function fb_likebox_theme() {
+  return array(
+      'fb_likebox_block' => array(
+        'variables' => array(
+          'fb_url' => NULL,
+          'fb_colorscheme' => NULL,
+          'fb_header' => NULL,
+          'fb_stream' => NULL,
+          'fb_show_faces' => NULL,
+          'fb_scrolling' => NULL,
+          'fb_width' => NULL,
+          'fb_height' => NULL,
+          'fb_show_border' => NULL,
+          'fb_force_wall' => NULL,
+        ),
+        'template' => 'fb_likebox_block'
+      ),
+  );
+}
+
+/**
+ * Returns HTML for "Change pants" block.
+ *
+ * @ingroup themeable
+ */
+function template_preprocess_fb_likebox_block(&$variables) {
+  //@TO-DO: Figure out how to get the variables values here. Config?
+  $variables['fb_url'] = 'http://www.facebook.com/wikisaber.es';
+  $variables['fb_colorscheme'] = 'light';
+  $variables['fb_header'] = 'true';
+  $variables['fb_stream'] = 'true';
+  $variables['fb_show_faces'] = 'true';
+  $variables['fb_scrolling'] = 'no';
+  $variables['fb_width'] = 'false';
+  $variables['fb_height'] = 292;
+  $variables['fb_show_border'] = 556;
+  $variables['fb_force_wall'] = 'true';
+}
