@@ -27,22 +27,3 @@ function fb_likebox_theme() {
       ),
   );
 }
-
-/**
- * Returns HTML for "Change pants" block.
- *
- * @ingroup themeable
- */
-function template_preprocess_fb_likebox_block(&$variables) {
-  //@TO-DO: Figure out how to get the variables values here. Config?
-  $variables['fb_url'] = 'http://www.facebook.com/wikisaber.es';
-  $variables['fb_colorscheme'] = 'light';
-  $variables['fb_header'] = 'true';
-  $variables['fb_stream'] = 'true';
-  $variables['fb_show_faces'] = 'true';
-  $variables['fb_scrolling'] = 'no';
-  $variables['fb_width'] = 292;
-  $variables['fb_height'] = 556;
-  $variables['fb_show_border'] = 'true';
-  $variables['fb_force_wall'] = 'false';
-}

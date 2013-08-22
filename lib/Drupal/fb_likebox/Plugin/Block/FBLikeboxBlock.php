@@ -203,8 +203,17 @@ class FBLikeboxBlock extends BlockBase {
    */
   public function build() {
     return array(
-      '#children' => theme('fb_likebox_block'),
+      '#theme' => 'fb_likebox_block',
+    	'#fb_url' => $this->configuration['fb_likebox_url'],
+    	'#fb_colorscheme' => $this->configuration['fb_likebox_colorscheme'],
+    	'#fb_header' => $this->configuration['fb_likebox_header'],
+    	'#fb_stream' => $this->configuration['fb_likebox_stream'],
+    	'#fb_show_faces' => $this->configuration['fb_likebox_show_faces'],
+    	'#fb_scrolling' => $this->configuration['fb_likebox_scrolling'],
+    	'#fb_width' => $this->configuration['fb_likebox_width'],
+    	'#fb_height' => $this->configuration['fb_likebox_height'],
+    	'#fb_show_border' => $this->configuration['fb_likebox_show_border'],
+    	'#fb_force_wall' => $this->configuration['fb_likebox_force_wall'],
     );
   }
 }
-?>
