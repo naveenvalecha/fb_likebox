@@ -2,9 +2,6 @@
 /**
  * @file
  * Code for FB Likebox module.
- * 
- * @TO-DO:
- *  - Include sitename in the decorator of FBLikeboxBlock
  */
 
 /**
