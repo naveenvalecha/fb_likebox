@@ -30,7 +30,7 @@ class FBLikeboxBlock extends BlockBase {
       'properties' => array(
         'administrative' => TRUE
       ),
-      'fb_likebox_url' => 'http://www.facebook.com/wikisaber.es',
+      'fb_likebox_url' => 'https://www.facebook.com/wikisaber.es',
       'fb_likebox_colorscheme' => 'light',
       'fb_likebox_header' => 'true',
       'fb_likebox_stream' => 'true',
@@ -61,7 +61,7 @@ class FBLikeboxBlock extends BlockBase {
       '#type' => 'textfield',
       '#title' => t('Facebook Page URL'),
       '#default_value' => $this->configuration['fb_likebox_url'],
-      '#description' => t('Enter the Facebook Page URL. I.e.: http://www.facebook.com/wikisaber.es'),
+      '#description' => t('Enter the Facebook Page URL. I.e.: https://www.facebook.com/wikisaber.es'),
       '#required' => TRUE,
     );
     $form['fb_likebox_display_settings']['fb_likebox_colorscheme'] = array(

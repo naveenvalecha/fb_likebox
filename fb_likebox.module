@@ -4,9 +4,6 @@
  * Code for FB Likebox module.
  * 
  * @TO-DO:
- *  - Add new option to choose the type of widget: iframe (default), html5, xfbml: check proper way to implement this:
- *    - Call a different function in build or do it in fb_likebox_theme() hook.
- *  - Re-organize the variables so the new ones are all in the same order when weight does not matter.
  *  - Include sitename in the decorator of FBLikeboxBlock
  */
 
@@ -14,7 +11,6 @@
  * Implements hook_theme().
  */
 function fb_likebox_theme() {
-	// @TO-DO: Return different functions according to the type of widget: html5, iframe, xfbml. Here or block.build().
   return array(
       'fb_likebox_block' => array(
         'variables' => array(
