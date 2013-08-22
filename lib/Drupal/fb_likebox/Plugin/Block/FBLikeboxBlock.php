@@ -194,8 +194,6 @@ class FBLikeboxBlock extends BlockBase {
     $this->configuration['fb_likebox_width'] = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_width'];
     $this->configuration['fb_likebox_height'] = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_height'];
     $this->configuration['fb_likebox_show_border'] = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_show_border'];
-    //@TO-DO: Figure out if we should set the config values here as well.
-    //config('fb_likebox')->set('fb_likebox_url', $form_state['values']['fb_likebox_display_settings']['fb_likebox_url'])->save(); 
   }
   
   /**
