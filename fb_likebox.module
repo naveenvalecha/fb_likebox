@@ -8,6 +8,7 @@
  * Implements hook_theme().
  */
 function fb_likebox_theme() {
+	// @TO-DO: Return different functions according to the type of widget: html5, iframe, xfbml
   return array(
       'fb_likebox_block' => array(
         'variables' => array(
@@ -40,8 +41,8 @@ function template_preprocess_fb_likebox_block(&$variables) {
   $variables['fb_stream'] = 'true';
   $variables['fb_show_faces'] = 'true';
   $variables['fb_scrolling'] = 'no';
-  $variables['fb_width'] = 'false';
-  $variables['fb_height'] = 292;
-  $variables['fb_show_border'] = 556;
-  $variables['fb_force_wall'] = 'true';
+  $variables['fb_width'] = 292;
+  $variables['fb_height'] = 556;
+  $variables['fb_show_border'] = 'true';
+  $variables['fb_force_wall'] = 'false';
 }
