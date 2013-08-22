@@ -35,7 +35,6 @@ class FBLikeboxBlock extends BlockBase {
       'fb_likebox_header' => 'true',
       'fb_likebox_stream' => 'true',
       'fb_likebox_show_faces' => 'true',
-      'fb_likebox_scrolling' => 'no',
       'fb_likebox_force_wall' => 'false',
       'fb_likebox_width' => 292,
       'fb_likebox_height' => 556,
@@ -109,17 +108,6 @@ class FBLikeboxBlock extends BlockBase {
       '#description' => t('Specifies whether or not to display profile photos in the plugin.'),
       '#required' => TRUE,
     );
-    $form['fb_likebox_display_settings']['fb_likebox_scrolling'] = array(
-      '#type' => 'select',
-      '#title' => t('Scrolling'),
-      '#default_value' => $this->configuration['fb_likebox_scrolling'],
-      '#options' => array(
-        'no' => t('Disabled'),
-        'yes' => t('Enabled'),
-      ),
-      '#description' => t('Enables vertical scrolling'),
-      '#required' => TRUE,
-    );
     $form['fb_likebox_display_settings']['fb_likebox_force_wall'] = array(
         '#type' => 'select',
         '#title' => t('Force wall'),
@@ -189,7 +177,6 @@ class FBLikeboxBlock extends BlockBase {
     $this->configuration['fb_likebox_header'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_header'];
     $this->configuration['fb_likebox_stream'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_stream'];
     $this->configuration['fb_likebox_show_faces'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_show_faces'];
-    $this->configuration['fb_likebox_scrolling'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_scrolling'];
     $this->configuration['fb_likebox_force_wall'] = $form_state['values']['fb_likebox_display_settings']['fb_likebox_force_wall'];
     $this->configuration['fb_likebox_width'] = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_width'];
     $this->configuration['fb_likebox_height'] = $form_state['values']['fb_likebox_theming_settings']['fb_likebox_height'];
@@ -207,7 +194,6 @@ class FBLikeboxBlock extends BlockBase {
       '#fb_header' => $this->configuration['fb_likebox_header'],
       '#fb_stream' => $this->configuration['fb_likebox_stream'],
       '#fb_show_faces' => $this->configuration['fb_likebox_show_faces'],
-      '#fb_scrolling' => $this->configuration['fb_likebox_scrolling'],
       '#fb_force_wall' => $this->configuration['fb_likebox_force_wall'],
     	'#fb_width' => $this->configuration['fb_likebox_width'],
       '#fb_height' => $this->configuration['fb_likebox_height'],
