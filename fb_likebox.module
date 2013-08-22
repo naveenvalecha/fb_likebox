@@ -24,10 +24,10 @@ function fb_likebox_theme() {
           'fb_stream' => NULL,
           'fb_show_faces' => NULL,
           'fb_scrolling' => NULL,
+          'fb_force_wall' => NULL,
           'fb_width' => NULL,
           'fb_height' => NULL,
           'fb_show_border' => NULL,
-          'fb_force_wall' => NULL,
         ),
         'template' => 'fb_likebox_block'
       ),
