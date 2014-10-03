@@ -6,10 +6,10 @@
 
 namespace Drupal\fb_likebox\Plugin\Block;
 
-use Drupal\block\BlockBase;
-use Drupal\Component\Annotation\Plugin;
+use Drupal\block\Annotation\Block;
+use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Annotation\Translation;
-use Drupal\Core\Config;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a configurable block with Facebook Likebox's plugin.
