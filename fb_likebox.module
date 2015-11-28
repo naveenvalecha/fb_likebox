@@ -4,6 +4,20 @@
  * Code for FB Likebox module.
  */
 
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function fb_likebox_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.fb_likebox':
+      $help_text = '<p>' . t('This module provides provides a configurable block with Facebook Likebox\'s plugin.') . '</p>';
+      return $help_text;
+  }
+}
+
+
 /**
  * Implements hook_theme().
  */
