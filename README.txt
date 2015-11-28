@@ -1,4 +1,14 @@
--- SUMMARY --
+CONTENTS OF THIS FILE
+---------------------
+
+ * Introduction
+ * Requirements
+ * Installation
+ * Configuration
+
+
+INTRODUCTION
+------------
 
 Simple module that provides a block with the latest updates from Facebook for
 the provided account. It is based on the likebox social plugin:
@@ -7,22 +17,28 @@ settings are configurable directly in the block  and they are available for
 users with 'administer blocks' permission.
 
 
--- REQUIREMENTS --
+REQUIREMENTS
+------------
 
-* None.
+Facebook Likebox has one dependency.
+
+Drupal core modules
+ * Block
 
 
--- INSTALLATION --
+INSTALLATION
+------------
 
 * Install as usual, see http://drupal.org/node/70151 for further information.
 
 
--- CONFIGURATION --
+CONFIGURATION
+-------------
 
-* Go to Site > List > 'Theme' in D6 or Structure > Blocks > 'Theme' in D7
+* Go to Structure > Blocks
 * The block will be called "'Your site name' on Facebook"
 * Click on 'configure':
-* Add the Facebook Page (i.e.: http://www.facebook.com/wikisaber.es) and
+* Add the Facebook Page (i.e.: https://www.facebook.com/facebook) and
   configure the display and appearance settings.
 
  - Configuration examples:
@@ -51,6 +67,7 @@ users with 'administer blocks' permission.
  --- Height: 330
 
 
--- CONTACT --
+Current Maintainers:
 
-david.rozas@gmail.com
+ * drozas https://www.drupal.org/u/drozas
+ * baekelandt https://www.drupal.org/u/baekelandt
