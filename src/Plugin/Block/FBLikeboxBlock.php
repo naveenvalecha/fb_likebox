@@ -69,16 +69,19 @@ class FBLikeboxBlock extends BlockBase {
       '#required' => TRUE,
     );
     $form['fb_likebox_display_settings']['width'] = array(
-      '#type' => 'textfield',
+      '#type' => 'number',
       '#title' => $this->t('Width'),
       '#default_value' => $config['width'],
+      '#min' => 280,
+      '#max' => 500,
       '#description' => $this->t('The width of the Facebook likebox. Must be a number between 280 and 500, limits included.'),
       '#required' => TRUE,
     );
     $form['fb_likebox_display_settings']['height'] = array(
-      '#type' => 'textfield',
+      '#type' => 'number',
       '#title' => $this->t('Height'),
       '#default_value' => $config['height'],
+      '#min' => 130,
       '#description' => $this->t('The height of the plugin in pixels. Must be a number bigger than 130.'),
       '#required' => TRUE,
     );
@@ -106,20 +109,6 @@ class FBLikeboxBlock extends BlockBase {
     return $form;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function blockValidate($form, FormStateInterface $form_state) {
-    $form_state->setErrorByName('label', $this->t('label error.'));
-    $fb_width = $form_state->getValue(array('fb_likebox_display_settings', 'width'));
-    if (!is_numeric($fb_width) || intval($fb_width) < 280 || intval($fb_width) > 500) {
-      $form_state->setErrorByName('fb_likebox_display_settings][width', $this->t('Width should be a number between 280 and 500, limits included.'));
-    }
-    $fb_height =$form_state->getValue(array('fb_likebox_display_settings', 'height'));
-    if (!is_numeric($fb_height) || intval($fb_height) < 130) {
-      $form_state->setErrorByName('fb_likebox_display_settings][height', $this->t('Height should be a number bigger than 130.'));
-    }
-  }
 
   /**
    * {@inheritdoc}
