@@ -103,7 +103,7 @@ class FBLikeboxBlock extends BlockBase {
     $form['fb_likebox_display_settings']['language'] = array(
       '#type' => 'select',
       '#title' => t('Choose your language'),
-      '#options' => $this->fb_likebox_languages(),
+      '#options' => $this->likeboxLanguages(),
       '#default_value' => $config['language'],
     );
     return $form;
@@ -114,7 +114,7 @@ class FBLikeboxBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state) {
-    $display_settings =  $form_state->getValue('fb_likebox_display_settings');
+    $display_settings = $form_state->getValue('fb_likebox_display_settings');
     foreach ($display_settings as $key => $value) {
       $this->configuration[$key] = $value;
     }
@@ -215,9 +215,12 @@ class FBLikeboxBlock extends BlockBase {
   }
 
   /**
+   * Returns a list of all available facebook likebox languages.
+   *
    * @return array
+   *   Returns a list of all available facebook likebox languages.
    */
-  public function fb_likebox_languages() {
+  public function likeboxLanguages() {
     return [
       'af_ZA' => $this->t('Afrikaans'),
       'ak_GH' => $this->t('Akan'),
@@ -360,4 +363,5 @@ class FBLikeboxBlock extends BlockBase {
       'zz_TR' => $this->t('Zazaki'),
     ];
   }
+
 }
