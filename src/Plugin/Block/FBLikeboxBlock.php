@@ -195,7 +195,7 @@ class FBLikeboxBlock extends BlockBase {
    * @return array
    *   Returns a list of all available facebook likebox languages.
    */
-  public function likeboxLanguages() {
+  protected function likeboxLanguages() {
     return [
       'af_ZA' => $this->t('Afrikaans'),
       'ak_GH' => $this->t('Akan'),
