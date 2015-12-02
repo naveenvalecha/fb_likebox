@@ -1,4 +1,9 @@
-Drupal.behaviors.fb_likebox = {
+/**
+ * @file
+ * Facebook Likebox behaviors.
+ */
+
+Drupal.behaviors.fbLikebox = {
   attach: function (context, settings) {
     if (context !== document) {
       // AJAX request.
