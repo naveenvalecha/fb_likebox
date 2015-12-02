@@ -8,7 +8,6 @@ namespace Drupal\fb_likebox\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 
 /**
  * Provides a configurable block with Facebook Likebox's plugin.
@@ -26,7 +25,7 @@ class FBLikeboxBlock extends BlockBase {
    */
   public function blockForm($form, FormStateInterface $form_state) {
 
-    $config = $this->configuration;
+    $config = $this->getConfiguration();
 
     // Facebook Widget settings.
     $form['fb_likebox_display_settings'] = array(
@@ -95,10 +94,10 @@ class FBLikeboxBlock extends BlockBase {
       '#title' => $this->t('Use the small header instead'),
       '#default_value' => $config['small_header'],
     );
-    $form['fb_likebox_display_settings']['container_width'] = array(
+    $form['fb_likebox_display_settings']['adapt_container_width'] = array(
       '#type' => 'checkbox',
       '#title' => $this->t('Try to fit inside the container width'),
-      '#default_value' => $config['container_width'],
+      '#default_value' => $config['adapt_container_width'],
     );
     $form['fb_likebox_display_settings']['language'] = array(
       '#type' => 'select',
@@ -116,7 +115,7 @@ class FBLikeboxBlock extends BlockBase {
   public function blockSubmit($form, FormStateInterface $form_state) {
     $display_settings = $form_state->getValue('fb_likebox_display_settings');
     foreach ($display_settings as $key => $value) {
-      $this->configuration[$key] = $value;
+      $this->setConfigurationValue($key, $value);
     }
   }
 
@@ -125,71 +124,47 @@ class FBLikeboxBlock extends BlockBase {
    */
   public function build() {
 
-    $config = $this->configuration;
+    $config = $this->getConfiguration();
 
-    $render = [
-      '#type' => 'link',
-      '#title' => 'Twitter feed',
-      '#url' => Url::fromUri('https://twitter.com/twitterapi'),
+    $render['root-div'] = [
+      '#type' => 'container',
       '#attributes' => [
-        'class' => ['twitter-timeline'],
-        'data-widget-id' => $config['widget_id'],
-      ],
-      '#attached' => [
-        'library' => ['twitter_block/widgets'],
+        'id' => ['fb-root'],
       ],
     ];
 
-    if (!empty($config['theme'])) {
-      $render['#attributes']['data-theme'] = $config['theme'];
-    }
+    $render['block'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['fb-page'],
+        'data-href' => $config['url'],
+        'data-width' => $config['width'],
+        'data-height' => $config['height'],
+        'data-hide-cover' => $config['hide_header'],
+        'data-show-facepile' => $config['show_faces'],
+        'data-show-posts' => $config['stream'],
+        'data-hide-cta' => $config['hide_cta'],
+        'data-small-header' => $config['small_header'],
+        'data-adapt-container-width' => $config['adapt_container_width'],
+      ],
+    ];
 
-    if (!empty($config['link_color'])) {
-      $render['#attributes']['data-link-color'] = '#' . $config['link_color'];
-    }
-
-    if (!empty($config['width'])) {
-      $render['#attributes']['width'] = $config['width'];
-    }
-
-    if (!empty($config['height'])) {
-      $render['#attributes']['height'] = $config['height'];
-    }
-
-    if (!empty($config['chrome'])) {
-      $options = array();
-
-      foreach ($config['chrome'] as $option => $status) {
-        if ($status) {
-          $options[] = $option;
-        }
-      }
-
-      if (count($options)) {
-        $render['#attributes']['data-chrome'] = implode(' ', $options);
-      }
-    }
-
-    if (!empty($config['border_color'])) {
-      $render['#attributes']['data-border-color'] = '#' . $config['border_color'];
-    }
-
-    if (!empty($config['language'])) {
-      $render['#attributes']['lang'] = $config['language'];
-    }
-
-    if (!empty($config['tweet_limit'])) {
-      $render['#attributes']['data-tweet-limit'] = $config['tweet_limit'];
-    }
-
-    if (!empty($config['related'])) {
-      $render['#attributes']['data-related'] = $config['related'];
-    }
-
-    if (!empty($config['polite'])) {
-      $render['#attributes']['aria-polite'] = $config['polite'];
-    }
-
+    $render['block']['child'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['fb-xfbml-parse-ignore'],
+      ],
+    ];
+    $render['block']['child']['blockquote'] = [
+      '#type' => 'link',
+      '#title' => $config['title'],
+      '#href' => $config['url'],
+      '#prefix' => '<blockquote cite="' . $config['url'] . '">',
+      '#suffix' => '</blockquote>',
+    ];
+    $render['#attached']['library'][] = 'fb_likebox/drupal.fb_likebox';
+    $render['#attached']['drupalSettings']['fbLikeboxAppId'] = $config['app_id'];
+    $render['#attached']['drupalSettings']['fbLikeboxLanguage'] = $config['language'];
     return $render;
   }
 
