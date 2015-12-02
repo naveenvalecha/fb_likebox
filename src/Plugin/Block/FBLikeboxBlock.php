@@ -71,17 +71,17 @@ class FBLikeboxBlock extends BlockBase {
       '#type' => 'number',
       '#title' => $this->t('Width'),
       '#default_value' => $config['width'],
-      '#min' => 280,
+      '#min' => 180,
       '#max' => 500,
-      '#description' => $this->t('The width of the Facebook likebox. Must be a number between 280 and 500, limits included.'),
+      '#description' => $this->t('The width of the Facebook likebox. Must be a number between 180 and 500, limits included.'),
       '#required' => TRUE,
     );
     $form['fb_likebox_display_settings']['height'] = array(
       '#type' => 'number',
       '#title' => $this->t('Height'),
       '#default_value' => $config['height'],
-      '#min' => 130,
-      '#description' => $this->t('The height of the plugin in pixels. Must be a number bigger than 130.'),
+      '#min' => 70,
+      '#description' => $this->t('The height of the plugin in pixels. Must be a number bigger than 70.'),
       '#required' => TRUE,
     );
     $form['fb_likebox_display_settings']['hide_cta'] = array(

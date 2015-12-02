@@ -16,7 +16,7 @@ Drupal.behaviors.fbLikebox = {
       }
       js = d.createElement(s);
       js.id = id;
-      js.src = "//connect.facebook.net/" + settings.fbLikeboxLanguage + "/sdk.js#xfbml=1&version=v2.3";
+      js.src = "//connect.facebook.net/" + settings.fbLikeboxLanguage + "/sdk.js#xfbml=1&version=v2.5";
       if (settings.fb_likebox_app_id) {
           js.src += "&appId=" + settings.fbLikeboxAppId;
       }
